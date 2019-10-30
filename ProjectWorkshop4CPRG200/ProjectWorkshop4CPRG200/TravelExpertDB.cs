@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Class TravelExperDB : contain method GetConnection to start a new connection to Db TravelExpert
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;

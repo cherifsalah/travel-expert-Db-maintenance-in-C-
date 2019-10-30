@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Class ProductDb: method getProduct to get all the Products
+// Add update and delete Product
+//a method ProductNameIsNotTaken : check if productName not taken
+//GetProductNameById : get ProductName of a given ProductID
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -7,15 +11,15 @@ using System.Threading.Tasks;
 
 namespace ProjectWorkshop4CPRG200
 {
-    public class ProductDB
+    public static class ProductDB
     {
         //Get a list of all products in the Db
-        public List<Product> GetProducts()
+        public static List<Product> GetProducts()
         { 
         List<Product> lstresult = new List<Product>();
             using (SqlConnection connection = TravelExpertDB.GetConnection())
             {
-                string selectQuery = "SELECT ProductID, ProductName" +
+                string selectQuery = "SELECT ProductID, ProdName" +
                                      " FROM Products";
                 
                 using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
@@ -31,7 +35,7 @@ namespace ProjectWorkshop4CPRG200
                         {
                             Product product = new Product();
                             product.ProductID = (int)reader["ProductID"];
-                            product.ProductName = (string)reader["ProductName"];
+                            product.ProductName = (string)reader["ProdName"];
 
                             lstresult.Add(product);
                         }
@@ -50,9 +54,9 @@ namespace ProjectWorkshop4CPRG200
            
             SqlConnection con = TravelExpertDB.GetConnection();
             string updateStatement = "UPDATE Products SET " +
-                                     "ProductName = @NewProductName, " +
+                                     "ProdName = @NewProductName " +
                                      "WHERE ProductID = @OldProductID " + // to identify record to update
-                                      "AND ProductName=@OldProductName";  // remaining conditions for optimistic concurrency
+                                      "AND ProdName= @OldProductName ";  // remaining conditions for optimistic concurrency
             SqlCommand cmd = new SqlCommand(updateStatement, con);
             cmd.Parameters.AddWithValue("@NewProductName", NewProduct.ProductName);
             cmd.Parameters.AddWithValue("@OldProductID", OldProduct.ProductID);
@@ -79,7 +83,7 @@ namespace ProjectWorkshop4CPRG200
         public static int AddProduct(Product product)
         {
             SqlConnection con = TravelExpertDB.GetConnection();
-            string insertStatement = "INSERT INTO Products (ProductName) " +
+            string insertStatement = "INSERT INTO Products (ProdName) " +
                                      "VALUES(@ProductName)";
             SqlCommand cmd = new SqlCommand(insertStatement, con);
             cmd.Parameters.AddWithValue("@ProductName", product.ProductName);
@@ -110,7 +114,7 @@ namespace ProjectWorkshop4CPRG200
             SqlConnection con = TravelExpertDB.GetConnection();
             string deleteStatement = "DELETE FROM Products " +
                                      "WHERE ProductID = @ProductID " + // to identify the product to be  deleted
-                                     "AND ProductName = @ProductName "; // remaining conditions - to ensure optimistic concurrency
+                                     "AND ProdName = @ProductName "; // remaining conditions - to ensure optimistic concurrency
                                      
             SqlCommand cmd = new SqlCommand(deleteStatement, con);
             cmd.Parameters.AddWithValue("@ProductID", product.ProductID);
@@ -132,5 +136,18 @@ namespace ProjectWorkshop4CPRG200
                 con.Close();
             }
         }
+        //return true if product name is not taken before
+        public static bool ProductNameIsNotTaken(List<Product> lstProducts, string ProductName)
+        {
+            bool isnottaken = true;
+            if (lstProducts.Where(x => x.ProductName == ProductName).ToList().Count()!= 0) isnottaken=false ;
+            return isnottaken;
+        }
+        //return ProductName by prodId
+        public static string GetProductNameById(List<Product> lst, int ProdID)
+        {
+            return lst.Where(x => x.ProductID == ProdID).ToList()[0].ProductName; 
+        }
+
     }
 }

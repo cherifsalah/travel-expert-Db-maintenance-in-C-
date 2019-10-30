@@ -46,12 +46,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddNewSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddNewSupplier.Designer.cs">
+      <DependentUpon>frmAddNewSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddPKg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddPKg.Designer.cs">
+      <DependentUpon>frmAddPKg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddProduct.Designer.cs">
+      <DependentUpon>frmAddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddProductSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddProductSupplier.Designer.cs">
+      <DependentUpon>frmAddProductSupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmmain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmmain.Designer.cs">
       <DependentUpon>frmmain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUpdatePkg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdatePkg.Designer.cs">
+      <DependentUpon>frmUpdatePkg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateProductsOfPkg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateProductsOfPkg.Designer.cs">
+      <DependentUpon>frmUpdateProductsOfPkg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateProductSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateProductSupplier.Designer.cs">
+      <DependentUpon>frmUpdateProductSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateSupplier.Designer.cs">
+      <DependentUpon>frmUpdateSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Package.cs" />
+    <Compile Include="PackageDB.cs" />
+    <Compile Include="Package_Products_Suppliers.cs" />
+    <Compile Include="Package_Products_SuppliersDB.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductDB.cs" />
     <Compile Include="ProductSupplier.cs" />
@@ -61,8 +113,39 @@
     <Compile Include="Supplier.cs" />
     <Compile Include="SupplierDb.cs" />
     <Compile Include="TravelExpertDB.cs" />
+    <Compile Include="frmUpdateProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateProduct.Designer.cs">
+      <DependentUpon>frmUpdateProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validator.cs" />
+    <EmbeddedResource Include="frmAddNewSupplier.resx">
+      <DependentUpon>frmAddNewSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddPKg.resx">
+      <DependentUpon>frmAddPKg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddProduct.resx">
+      <DependentUpon>frmAddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddProductSupplier.resx">
+      <DependentUpon>frmAddProductSupplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmmain.resx">
       <DependentUpon>frmmain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdatePkg.resx">
+      <DependentUpon>frmUpdatePkg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateProductsOfPkg.resx">
+      <DependentUpon>frmUpdateProductsOfPkg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateProductSupplier.resx">
+      <DependentUpon>frmUpdateProductSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateSupplier.resx">
+      <DependentUpon>frmUpdateSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -73,6 +156,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmUpdateProduct.resx">
+      <DependentUpon>frmUpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\Package.datasource" />
+    <None Include="Properties\DataSources\Packages_Products_Suppliers.datasource" />
+    <None Include="Properties\DataSources\Product.datasource" />
+    <None Include="Properties\DataSources\ProductSupplier.datasource" />
+    <None Include="Properties\DataSources\Supplier.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Class product: property ProductID , ProductName and a method to copy a product
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,17 @@ namespace ProjectWorkshop4CPRG200
         public int ProductID { get; set; }
 
         public string ProductName { get; set; }
-       
+
+        //method copy a Product
+        public Product CopyProduct()
+        {
+            Product copy = new Product();
+            copy.ProductID = ProductID; // this Product ID
+            copy.ProductName = ProductName;
+            
+            return copy;
+        }
+
 
     }
 }
